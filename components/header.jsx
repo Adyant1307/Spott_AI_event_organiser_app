@@ -16,10 +16,18 @@ const Header = () => {
          className="w-full h-11" 
          priority />
         {/* Pro badge */}
+        {hasPro && (
+              <Badge className="bg-linear-to-r from-pink-500 to-orange-500 gap-1 text-white ml-3">
+                <Crown className="w-3 h-3" />
+                Pro
+              </Badge>
+            )}
         </Link>
 
         {/*Search & Location - Desktop Only */}
-        
+         <div className="hidden md:flex flex-1 justify-center">
+            <SearchLocationBar />
+          </div>
         {/* Right Side Actions */}
     </div>
 
