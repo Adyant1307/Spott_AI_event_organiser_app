@@ -29,7 +29,31 @@ const Header = () => {
             <SearchLocationBar />
           </div>
         {/* Right Side Actions */}
-    </div>
+        <div className="flex items-center">
+            {/* Show Pro badge or Upgrade button */}
+            {!hasPro && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setShowUpgradeModal(true)}
+              >
+                Pricing
+              </Button>
+            )}
+
+            <Button variant="ghost" size="sm" asChild className={"mr-2"}>
+              <Link href="/explore">Explore</Link>
+            </Button>
+
+            <Authenticated>
+              {/* Create Event Button */}
+              <Button size="sm" asChild className="flex gap-2 mr-4">
+                <Link href="/create-event">
+                  <Plus className="w-4 h-4" />
+                  <span className="hidden sm:inline">Create Event</span>
+                </Link>
+              </Button>
+    
 
     {/* Mobile Search & Location - Below Header */}
    </nav>
