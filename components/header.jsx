@@ -53,12 +53,65 @@ const Header = () => {
                   <span className="hidden sm:inline">Create Event</span>
                 </Link>
               </Button>
+
+                {/* User Button */}
+              <UserButton
+                afterSignOutUrl="/"
+                appearance={{
+                  elements: {
+                    avatarBox: "w-9 h-9",
+                  },
+                }}
+              >
+                <UserButton.MenuItems>
+                  <UserButton.Link
+                    label="My Tickets"
+                    labelIcon={<Ticket size={16} />}
+                    href="/my-tickets"
+                  />
+                  <UserButton.Link
+                    label="My Events"
+                    labelIcon={<Building size={16} />}
+                    href="/my-events"
+                  />
+                  <UserButton.Action label="manageAccount" />
+                </UserButton.MenuItems>
+              </UserButton>
+            </Authenticated>
+
+            <Unauthenticated>
+              <SignInButton mode="modal">
+                <Button size="sm">Sign In</Button>
+              </SignInButton>
+            </Unauthenticated>
+          </div>
+        </div>
     
 
     {/* Mobile Search & Location - Below Header */}
+    <div className="md:hidden border-t px-3 py-3">
+          <SearchLocationBar />
+        </div>
+
+        {isLoading && (
+          <div className="absolute bottom-0 left-0 w-full">
+            <BarLoader width={"100%"} color="#a855f7" />
+          </div>
+        )}
    </nav>
 
    {/* Modals */}
+     <OnboardingModal
+        isOpen={showOnboarding}
+        onClose={handleOnboardingSkip}
+        onComplete={handleOnboardingComplete}
+      />
+
+      <UpgradeModal
+        isOpen={showUpgradeModal}
+        onClose={() => setShowUpgradeModal(false)}
+        trigger="header"
+      />
   
   </>
   ) 
