@@ -1,6 +1,19 @@
+"use client";
+
+import React, { useState } from "react";
 import Link from "next/link";
-import Image from 'next/image';
-import React from 'react';
+import { Building, Crown, Plus, Sparkles, Ticket } from "lucide-react";
+import { SignInButton, useAuth, UserButton, useUser } from "@clerk/nextjs";
+import { Authenticated, Unauthenticated } from "convex/react";
+import { BarLoader } from "react-spinners";
+import { useStoreUser } from "@/hooks/use-store-user";
+import { useOnboarding } from "@/hooks/use-onboarding";
+import OnboardingModal from "./onboarding-modal";
+import SearchLocationBar from "./search-location-bar";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import UpgradeModal from "./upgrade-modal";
+import { Badge } from "./ui/badge";
 
 const Header = () => {
   return (
